@@ -16,8 +16,8 @@ function CollectionsDropdown({ open }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 z-50"
-          style={{ width: 520 }}
+          className="absolute top-full mt-3 z-50"
+          style={{ width: 520, left: '50%', transform: 'translateX(-48%)' }}
           initial={{ opacity: 0, y: -8, filter: 'blur(6px)' }}
           animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           exit={{ opacity: 0, y: -6, filter: 'blur(4px)' }}
@@ -124,7 +124,11 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-16 flex items-center justify-between">
 
-        <Link to="/" className="flex items-center gap-2">
+        <Link
+          to="/"
+          className="flex items-center gap-2"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        >
           <span className="text-lg font-semibold tracking-[0.15em] uppercase text-white">Velaura</span>
           <span className="w-1.5 h-1.5 rounded-full mt-0.5" style={{ backgroundColor: '#F07030' }} />
         </Link>
