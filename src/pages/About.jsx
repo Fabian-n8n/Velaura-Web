@@ -29,7 +29,7 @@ const TEAM = [
     name: 'James Tan',
     role: 'Head of Operations',
     bio: 'With 14 years in luxury home furnishings, James ensures every project runs with precision from first visit to final hang.',
-    img: 'https://images.unsplash.com/photo-1607346256330-dee7af15f7c5?auto=format&fit=crop&w=600&h=700&q=80',
+    img: 'https://images.unsplash.com/photo-1566492031773-4f4e44671857?auto=format&fit=crop&w=600&h=700&q=80',
   },
   {
     name: 'Priya Krishnan',
@@ -41,7 +41,7 @@ const TEAM = [
     name: 'David Lim',
     role: 'Lead Installation Specialist',
     bio: 'David has installed curtains in over 800 homes — from HDB flats to Sentosa Cove bungalows — without a single callback.',
-    img: 'https://images.unsplash.com/photo-1524503033411-c9566986fc8f?auto=format&fit=crop&w=600&h=700&q=80',
+    img: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&h=700&q=80',
   },
 ];
 
@@ -99,7 +99,7 @@ function TeamCard({ member, index }) {
         <img
           src={member.img}
           alt={member.name}
-          className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+          className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
         />
         {/* Gradient overlay */}
         <div
