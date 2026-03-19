@@ -62,7 +62,7 @@ export default function CTABanner() {
         <FadeUp delay={0.32}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="mailto:hello@velaura.sg"
+              href="/book"
               className="inline-flex items-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
               style={{ backgroundColor: '#F07030' }}
             >

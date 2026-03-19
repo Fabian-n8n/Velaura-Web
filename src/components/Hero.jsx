@@ -167,7 +167,7 @@ export default function Hero() {
           <BlurIn delay={0.65} duration={0.6}>
             <div className="flex items-center gap-4 flex-wrap">
               <a
-                href="#contact"
+                href="/book"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-opacity hover:opacity-90"
                 style={{ backgroundColor: '#ffffff', color: '#070612' }}
               >

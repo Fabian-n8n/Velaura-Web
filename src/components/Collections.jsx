@@ -1,6 +1,8 @@
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { FadeUp, SplitText, StaggerParent, StaggerChild } from '@/components/ui/animations';
+import { Link } from 'react-router-dom';
+import { COLLECTIONS as COL_DATA } from '@/data/collections';
 
 const COLLECTIONS = [
   {
@@ -62,9 +64,9 @@ const COLLECTIONS = [
 
 function CollectionCard({ col, index }) {
   return (
-    <motion.a
-      href="#contact"
-      className="group block rounded-2xl overflow-hidden"
+    <Link to={`/collections/${col.slug}`}>
+    <motion.div
+      className="group block rounded-2xl overflow-hidden cursor-pointer"
       style={{ border: '1px solid rgba(255,255,255,0.07)' }}
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -124,7 +126,8 @@ function CollectionCard({ col, index }) {
         <p className="text-xs text-white/45 leading-relaxed mb-1">{col.tagline}</p>
         <p className="text-xs text-white/30 leading-relaxed">{col.desc}</p>
       </div>
-    </motion.a>
+    </motion.div>
+    </Link>
   );
 }
 
@@ -166,7 +169,7 @@ export default function Collections() {
 
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {COLLECTIONS.map((col, i) => (
+          {COL_DATA.map((col, i) => (
             <CollectionCard key={col.id} col={col} index={i} />
           ))}
         </div>
