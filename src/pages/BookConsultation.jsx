@@ -372,12 +372,25 @@ export default function BookConsultation() {
     return e;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true);
-    setTimeout(() => { setLoading(false); setSubmitted(true); }, 1000);
+    try {
+      const res = await fetch('/api/submit-booking', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setErrors({ submit: 'Something went wrong. Please try again or WhatsApp us directly.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -524,6 +537,11 @@ export default function BookConsultation() {
                     onChange={e => set('message', e.target.value)}
                   />
                 </Field>
+
+                {/* Submit error */}
+                {errors.submit && (
+                  <p className="text-sm text-center" style={{ color: '#F07030' }}>{errors.submit}</p>
+                )}
 
                 {/* Submit */}
                 <motion.button
