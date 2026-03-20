@@ -13,6 +13,10 @@ export default async function handler(req, res) {
   const baseId = 'appyRPhJlJsJQT71h';
   const tableId = 'tblkYNlO2HUMjr8Vj';
 
+  const notesLines = [];
+  if (rooms?.length) notesLines.push(`Rooms: ${rooms.join(', ')}`);
+  if (message)       notesLines.push(message);
+
   const payload = {
     records: [
       {
@@ -21,10 +25,8 @@ export default async function handler(req, res) {
           Email: email,
           Phone: phone,
           'Property Type': propertyType,
-          Rooms: rooms,
-          'Preferred Date': date || null,
-          Message: message || '',
-          Status: 'New',
+          ...(date ? { 'Visit Date': date } : {}),
+          ...(notesLines.length ? { Notes: notesLines.join('\n') } : {}),
         },
       },
     ],
