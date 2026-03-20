@@ -14,6 +14,7 @@ export default async function handler(req, res) {
   const tableId = 'tblkYNlO2HUMjr8Vj';
 
   const notesLines = [];
+  if (propertyType) notesLines.push(`Property Type: ${propertyType}`);
   if (rooms?.length) notesLines.push(`Rooms: ${rooms.join(', ')}`);
   if (message)       notesLines.push(message);
 
@@ -24,7 +25,6 @@ export default async function handler(req, res) {
           Name: name,
           Email: email,
           Phone: phone,
-          'Property Type': propertyType,
           ...(date ? { 'Visit Date': date } : {}),
           ...(notesLines.length ? { Notes: notesLines.join('\n') } : {}),
         },
